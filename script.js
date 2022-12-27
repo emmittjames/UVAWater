@@ -22,7 +22,12 @@ function initMap() {
 
         marker.addListener("click", () => {
             infoWindow.close();
-            infoWindow.setContent(marker.getTitle())
+            infoWindow.setContent(
+                "<h3>" + marker.getTitle() + "</h3><h4>" + 
+                "Overall rating: " + "</h4><div>" + 
+                "Temperature: " + "</div><div>" +
+                "Water flow: " + "</div"
+            )
             infoWindow.open(map, marker)
         })
     })
