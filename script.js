@@ -8,18 +8,24 @@ function initMap() {
 
     var infoWindow = new google.maps.InfoWindow()
 
-    const newCabCoords = { lat: 38.0325, lng: -78.5051 }
-    const newCabMarker = new google.maps.Marker({
-        position: newCabCoords,
-        map: map
-    })
+    const waterFountains = [
+        [{ lat: 38.0325, lng: -78.5051 }, "New Cabell Hall"],
+        [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall"]
+    ]
 
-    newCabMarker.addListener("click", () => {
-        infoWindow.close();
-        infoWindow.setContent("testing")
-        infoWindow.open(newCabMarker.getMap(), newCabMarker)
-    })
+    waterFountains.forEach(([coords, name], i) => {
+        const marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: name
+        })
 
+        marker.addListener("click", () => {
+            infoWindow.close();
+            infoWindow.setContent(marker.getTitle())
+            infoWindow.open(map, marker)
+        })
+    })
 }
 
 window.initMap = initMap;
