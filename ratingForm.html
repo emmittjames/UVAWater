@@ -12,14 +12,16 @@
     <header>
         <div><a href="index.html">Map</a></div>
     </header>
-    <div>Water fountain rating form</div>
-    <select name="Water Fountains" id="Water Fountains">
-        <option value="New Cabell Hall">New Cabell Hall</option>
-        <option value="Rice Hall">Rice Hall</option>
-        <option value="Clemons Library">Clemons Library</option>
-    </select>
-    <input name="Temperature rating" placeholder="temp">
-    <input name="Water flow rating" placeholder="flow"> 
-    <button type="submit">Submit</button>
+    <form onsubmit = "collectData()">
+        <div>Water fountain rating form</div>
+        <select name="fountain" id="fountain">
+            <option value="New Cabell Hall">New Cabell Hall</option>
+            <option value="Rice Hall">Rice Hall</option>
+            <option value="Clemons Library">Clemons Library</option>
+        </select>
+        <input type="number" id="temp" name="temp" placeholder="Temperature rating (1-5)" min="1" max="5"> 
+        <input type="number" id="flow" name="flow" placeholder="Flow ratin (1-5)" min="1" max="5"> 
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

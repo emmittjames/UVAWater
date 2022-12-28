@@ -23,7 +23,8 @@ function createMarkers(map){
                 "<h3>" + marker.getTitle() + "</h3><h4>" + 
                 "Overall rating: " + "</h4><div>" + 
                 "Temperature: " + "</div><div>" +
-                "Water flow: " + "</div"
+                "Water flow: " + "</div><div>" +
+                "Bottle refill station: " + "</div>"
             )
             infoWindow.open(map, marker)
         })
