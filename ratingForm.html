@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="formStyles.css">
     <script src = "formScript.js"></script>
-    <title>Document</title>
+    <title>Water fountain rating form</title>
 </head>
 <body>
     <header>
         <div><a href="index.html">Map</a></div>
     </header>
     <form onsubmit = "collectData()">
-        <div>Water fountain rating form</div>
+        <h2>Rate a water fountain</h2>
         <select name="fountain" id="fountain">
             <option value="New Cabell Hall">New Cabell Hall</option>
             <option value="Rice Hall">Rice Hall</option>
             <option value="Clemons Library">Clemons Library</option>
         </select>
         <input type="number" id="temp" name="temp" placeholder="Temperature rating (1-5)" min="1" max="5"> 
-        <input type="number" id="flow" name="flow" placeholder="Flow ratin (1-5)" min="1" max="5"> 
-        <button type="submit">Submit</button>
+        <input type="number" id="flow" name="flow" placeholder="Flow rating (1-5)" min="1" max="5"> 
+        <button type="submit" id="submit">Submit</button>
     </form>
 </body>
 </html>

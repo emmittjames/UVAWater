@@ -8,4 +8,6 @@ function collectData(){
 
     let fountain = document.getElementById("fountain").value
     console.log(fountain)
+
+    alert("Your response has been recorded. Thank you!")    
 }
