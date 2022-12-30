@@ -15,6 +15,10 @@ header{
     height: auto;
 }
 
+.logo{
+    height:100px;
+}
+
 body{
     font-family: 'poppins', sans-serif;
     display: flex;
@@ -65,11 +69,11 @@ form h2{
     color: gold;
 }
 
-form select, input{
+form select{
     width: 100%;
     height: 3em;
     margin-top: 0vh;
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
     padding-left: 1em;
     outline: none;
     border: none;
