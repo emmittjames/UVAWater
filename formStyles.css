@@ -3,6 +3,7 @@
 }
 
 body{
+    overflow: hidden;
     font-family: 'poppins', sans-serif;
     display: flex;
     flex-direction: column;
@@ -16,17 +17,38 @@ header{
     position: absolute;
     top: 0;
     width: 100%;
-    display:flex;
+    display: flex;
     justify-content: space-between;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
     height: 10vh;
-    background-color: #c1c1c1;
+    background-color: #646262;
 }
 
 .logo{
     padding-left: 1%;
     height:100%;
+}
+
+header .navbarLinks ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+header .navbarLinks ul li{
+    list-style: none;
+}
+
+header .navbarLinks ul li:hover{
+    background-color: #737373;
+}
+
+header .navbarLinks ul li a{
+    text-decoration: none;
+    color: white;
+    padding: 3.3vh;
+    font-size: 3vh;
+    display: block;
 }
 
 form{
