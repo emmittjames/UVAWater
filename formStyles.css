@@ -2,14 +2,22 @@
     box-sizing: border-box;
 }
 
-header{
-    display:flex;
+body{
+    font-family: 'poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10vh;
+    height: auto;
+}
+
+header{
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    width: 97%;
+    display:flex;
+    justify-content: space-between;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
     height: auto;
@@ -17,14 +25,6 @@ header{
 
 .logo{
     height:100px;
-}
-
-body{
-    font-family: 'poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    margin-top: 10vh;
-    height: auto;
 }
 
 form{
