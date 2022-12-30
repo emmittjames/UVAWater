@@ -16,6 +16,7 @@ header{
 }
 
 body{
+    font-family: 'poppins', sans-serif;
     display: flex;
     justify-content: center;
     margin-top: 10vh;
@@ -27,11 +28,36 @@ form{
     flex-direction: column;
     align-items: center;
     width: 40vw;
+    font: sans
 }
 
 form h2{
     justify-content: center;
     align-items: center;
+}
+
+.tempContainer{
+    display: flex;
+}
+
+.tempContainer input{
+    display: none;
+}
+
+.tempContainer label{
+    font-size: 3rem;
+    color: gray;
+    padding: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.tempContainer input:not(:checked) ~ label:hover,
+.tempContainer input:not(:checked) ~ label:hover ~ label{
+    color: gold;
+}
+
+.tempContainer input:checked ~ label{
+    color: gold;
 }
 
 form select, input{
@@ -42,7 +68,8 @@ form select, input{
     padding-left: 1em;
     outline: none;
     border: none;
-    background: #f5f5f5
+    background: #f5f5f5;
+    border-radius: 10px;
 }
 
 form button{
@@ -50,8 +77,9 @@ form button{
     width: 30%;
     margin: 20px auto 0;
     border-radius: 30px;
-    background: green;
+    background: #ff5361;
     border: none;
     outline: none;
     cursor: pointer;
+    color: white;
 }
