@@ -36,27 +36,32 @@ form h2{
     align-items: center;
 }
 
-.tempContainer{
+.tempContainer, .flowContainer{
     display: flex;
+    flex-direction: row-reverse;
 }
 
-.tempContainer input{
+.tempContainer input, .flowContainer input{
     display: none;
 }
 
-.tempContainer label{
+.tempContainer label, .flowContainer label{
     font-size: 3rem;
     color: gray;
     padding: 0.5rem;
-    transition: all 0.2s ease;
+    float: right;
+    transition: all 0.1s ease;
 }
 
 .tempContainer input:not(:checked) ~ label:hover,
-.tempContainer input:not(:checked) ~ label:hover ~ label{
+.tempContainer input:not(:checked) ~ label:hover ~ label,
+.flowContainer input:not(:checked) ~ label:hover,
+.flowContainer input:not(:checked) ~ label:hover ~ label{
     color: gold;
-}
+} 
 
-.tempContainer input:checked ~ label{
+.tempContainer input:checked ~ label,
+.flowContainer input:checked ~ label{
     color: gold;
 }
 
@@ -75,7 +80,7 @@ form select, input{
 form button{
     height: 3em;
     width: 30%;
-    margin: 20px auto 0;
+    margin: 5em;
     border-radius: 30px;
     background: #ff5361;
     border: none;

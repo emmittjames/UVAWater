@@ -20,20 +20,34 @@
             <option value="Rice Hall">Rice Hall</option>
             <option value="Clemons Library">Clemons Library</option>
         </select>
+        <h3>Temperature rating:</h3>
         <div class="tempContainer">
-            <input type="radio" id="temp5" name="temp"> 
+            <input type="radio" name="temp" id="temp5"> 
             <label for="temp5" class="fas fa-star"></label>
-            <input type="radio" id="temp4" name="temp"> 
+            <input type="radio" name="temp" id="temp4"> 
             <label for="temp4" class="fas fa-star"></label>
-            <input type="radio" id="temp3" name="temp"> 
+            <input type="radio" name="temp" id="temp3"> 
             <label for="temp3" class="fas fa-star"></label>
-            <input type="radio" id="temp2" name="temp"> 
+            <input type="radio" name="temp" id="temp2"> 
             <label for="temp2" class="fas fa-star"></label>
-            <input type="radio" id="temp1" name="temp"> 
+            <input type="radio" name="temp" id="temp1"> 
             <label for="temp1" class="fas fa-star"></label>
         </div>
-        <input type="number" id="temp" name="temp" placeholder="Temperature rating (1-5)" min="1" max="5"> 
-        <input type="number" id="flow" name="flow" placeholder="Flow rating (1-5)" min="1" max="5"> 
+        <h3>Flow rating:</h3>
+        <div class="flowContainer">
+            <input type="radio" name="flow" id="flow5"> 
+            <label for="flow5" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow4"> 
+            <label for="flow4" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow3"> 
+            <label for="flow3" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow2"> 
+            <label for="flow2" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow1"> 
+            <label for="flow1" class="fas fa-star"></label>
+        </div>
+        <!-- <input type="number" id="temp" name="temp" placeholder="Temperature rating (1-5)" min="1" max="5">  -->
+        <!-- <input type="number" id="flow" name="flow" placeholder="Flow rating (1-5)" min="1" max="5">  -->
         <button type="submit" id="submit">Submit</button>
     </form>
 </body>
