@@ -20,7 +20,7 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 10vh;
-    height: 95vh;
+    height: auto;
 }
 
 form{
@@ -80,7 +80,7 @@ form select, input{
 form button{
     height: 3em;
     width: 30%;
-    margin: 5em;
+    margin-top: 5em;
     border-radius: 30px;
     background: #ff5361;
     border: none;
