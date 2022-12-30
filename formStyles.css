@@ -62,6 +62,7 @@ form{
 form h2{
     justify-content: center;
     align-items: center;
+    margin-bottom: 10vh;
 }
 
 .tempContainer, .flowContainer{
