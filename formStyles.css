@@ -15,16 +15,18 @@ body{
 header{
     position: absolute;
     top: 0;
-    width: 97%;
+    width: 100%;
     display:flex;
     justify-content: space-between;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
-    height: auto;
+    height: 10vh;
+    background-color: #c1c1c1;
 }
 
 .logo{
-    height:100px;
+    padding-left: 1%;
+    height:100%;
 }
 
 form{
