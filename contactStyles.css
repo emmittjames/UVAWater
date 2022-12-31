@@ -65,38 +65,9 @@ form h2{
     margin-bottom: 10vh;
 }
 
-.tempContainer, .flowContainer{
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.tempContainer input, .flowContainer input{
-    display: none;
-}
-
-.tempContainer label, .flowContainer label{
-    font-size: 3rem;
-    color: gray;
-    padding: 0.5rem;
-    float: right;
-    transition: all 0.1s ease;
-}
-
-.tempContainer input:not(:checked) ~ label:hover,
-.tempContainer input:not(:checked) ~ label:hover ~ label,
-.flowContainer input:not(:checked) ~ label:hover,
-.flowContainer input:not(:checked) ~ label:hover ~ label{
-    color: gold;
-} 
-
-.tempContainer input:checked ~ label,
-.flowContainer input:checked ~ label{
-    color: gold;
-}
-
-form select{
+form input{
     width: 100%;
-    height: 3em;
+    height: 30vh;
     margin-top: 0vh;
     margin-bottom: 2vh;
     padding-left: 1em;
