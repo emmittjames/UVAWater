@@ -15,6 +15,7 @@ body{
 
 header{
     position: absolute;
+    align-items: center;
     top: 0;
     width: 100%;
     display: flex;
@@ -23,9 +24,9 @@ header{
     background-color: #646262;
 }
 
-.logo{
-    padding-left: 1%;
-    height:100%;
+header a .logo{
+    padding-left: 1vw;
+    height:5vh;
 }
 
 header .navbarLinks ul{
