@@ -7,11 +7,11 @@ function initMap() {
 function createMarkers(map){
     var infoWindow = new google.maps.InfoWindow()
     const waterFountains = [
-        [{ lat: 38.0325, lng: -78.5051 }, "New Cabell Hall"],
-        [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall"],
-        [{ lat: 38.0364, lng: -78.5061 }, "Clemons Library"]
+        [{ lat: 38.0325, lng: -78.5051 }, "New Cabell Hall", ["5th floor", "4th floor", "3rd floor", "2nd floor", "1st floor"]],
+        [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall", ["5th floor", "4th floor", "3rd floor", "2nd floor", "1st floor"]],
+        [{ lat: 38.0364, lng: -78.5061 }, "Clemons Library", ["4th floor", "3rd floor", "2nd floor", "1st floor"]]
     ]
-    waterFountains.forEach(([coords, name], i) => {
+    waterFountains.forEach(([coords, name, fountainLocations]) => {
         const marker = new google.maps.Marker({
             position: coords,
             map: map,
@@ -19,13 +19,19 @@ function createMarkers(map){
         })
         marker.addListener("click", () => {
             infoWindow.close();
-            infoWindow.setContent(
-                "<h3>" + marker.getTitle() + "</h3><h4>" + 
-                "Overall rating: " + "</h4><div>" + 
-                "Temperature: " + "</div><div>" +
-                "Water flow: " + "</div><div>" +
-                "Bottle refill station: " + "</div>"
+            var html = (
+                "<h2>" + marker.getTitle() + "</h2><h3>" + 
+                "Overall rating: " + "</h3>"
             )
+            fountainLocations.forEach((location) => {
+                 html += (
+                    "<h4>" + location + " rating: </h4>" +
+                    "Temperature: " + "</div><div>" +
+                    "Water flow: " + "</div><div>" +
+                    "Bottle refill station: " + "</div>"
+                 )   
+            })
+            infoWindow.setContent(html)
             infoWindow.open(map, marker)
         })
     })
