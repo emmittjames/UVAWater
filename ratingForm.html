@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="formStyles.css">
-    <script src = "formScript.js"></script>
+    <script src = "formScript.js" defer></script>
+    <script src = "waterFountainData.js"></script>
     <script src="https://kit.fontawesome.com/f7bac7fe3b.js" crossorigin="anonymous"></script>
     <title>Water fountain rating form</title>
 </head>
@@ -22,10 +23,7 @@
     </header>
     <form onsubmit = "collectData()">
         <h1>Water fountain rating form</h1>
-        <select name="fountain" id="fountain">
-            <option value="New Cabell Hall">New Cabell Hall</option>
-            <option value="Rice Hall">Rice Hall</option>
-            <option value="Clemons Library">Clemons Library</option>
+        <select name="fountain" id="fountainSelect">
         </select>
         <h3>Temperature rating:</h3>
         <div class="tempContainer">

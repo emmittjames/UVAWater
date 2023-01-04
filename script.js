@@ -1,4 +1,3 @@
-// Initialize and add the map
 function initMap() {
     const map = createMap()
     createMarkers(map)
@@ -6,11 +5,7 @@ function initMap() {
 
 function createMarkers(map){
     var infoWindow = new google.maps.InfoWindow()
-    const waterFountains = [
-        [{ lat: 38.0325, lng: -78.5051 }, "New Cabell Hall", ["5th floor", "4th floor", "3rd floor", "2nd floor", "1st floor"]],
-        [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall", ["5th floor", "4th floor", "3rd floor", "2nd floor", "1st floor"]],
-        [{ lat: 38.0364, lng: -78.5061 }, "Clemons Library", ["4th floor", "3rd floor", "2nd floor", "1st floor"]]
-    ]
+    const waterFountains = waterFountainData
     waterFountains.forEach(([coords, name, fountainLocations]) => {
         const marker = new google.maps.Marker({
             position: coords,
