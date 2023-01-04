@@ -30,7 +30,9 @@ function updateWaterFountains(){
 }
 
 function collectData(){
-    let fountain = document.getElementById("fountain").value
+    let building = document.getElementById("buildingSelect").value
+    let fountain = document.getElementById("fountainSelect").value
+    console.log(building)
     console.log(fountain)
 
     console.log("Temp: " + selectedTempRating())
