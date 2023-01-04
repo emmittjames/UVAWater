@@ -1,16 +1,25 @@
-var selection = document.getElementById("fountainSelect")
+var buildingSelect = document.getElementById("buildingSelect")
+var fountainSelect = document.getElementById("fountainSelect")
 const waterFountains = [
-    [{ lat: 38.0325, lng: -78.5051 }, "New Cabell Hall", ["5th floor", "4th floor", "3rd floor", "2nd floor", "1st floor"]],
-    [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall", ["5th floor", "4th floor", "3rd floor", "2nd floor", "1st floor"]],
-    [{ lat: 38.0364, lng: -78.5061 }, "Clemons Library", ["4th floor", "3rd floor", "2nd floor", "1st floor"]]
+    [{ lat: 38.0325, lng: -78.5051 }, "New Cabell Hall", ["1st floor", "2nd floor", "3rd floor", "4th floor", "5th floor"]],
+    [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall", ["1st floor", "2nd floor", "3rd floor", "4th floor", "5th floor"]],
+    [{ lat: 38.0364, lng: -78.5061 }, "Clemons Library", ["1st floor", "2nd floor", "3rd floor", "4th floor"]]
 ]
 waterFountains.forEach(([coords, name, fountainLocations]) => {
-    fountainLocations.forEach((location) => {
-        var option = document.createElement("option")
-        option.value = name + " " + location
-        option.text = name + " " + location
-        selection.appendChild(option)
-    })
+    var option = document.createElement("option")
+    option.value = name
+    option.text = name
+    buildingSelect.appendChild(option)
+})
+waterFountains.forEach(([coords, name, fountainLocations]) => {
+    if(name === buildingSelect.value){
+        fountainLocations.forEach((location) => {
+            var option = document.createElement("option")
+            option.value = location
+            option.text =  location
+            fountainSelect.appendChild(option)
+        })
+    }
 })
 
 function collectData(){
