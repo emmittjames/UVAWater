@@ -11,16 +11,27 @@ waterFountains.forEach(([coords, name, fountainLocations]) => {
     option.text = name
     buildingSelect.appendChild(option)
 })
-waterFountains.forEach(([coords, name, fountainLocations]) => {
-    if(name === buildingSelect.value){
-        fountainLocations.forEach((location) => {
-            var option = document.createElement("option")
-            option.value = location
-            option.text =  location
-            fountainSelect.appendChild(option)
-        })
-    }
+updateWaterFountains()
+
+document.querySelector("#buildingSelect").addEventListener("change",function(){
+    updateWaterFountains()
 })
+
+function updateWaterFountains(){
+    for(let i=fountainSelect.options.length-1;i>=0;i--){
+        fountainSelect.remove(i)
+    }
+    waterFountains.forEach(([coords, name, fountainLocations]) => {
+        if(name === buildingSelect.value){
+            fountainLocations.forEach((location) => {
+                var option = document.createElement("option")
+                option.value = location
+                option.text =  location
+                fountainSelect.appendChild(option)
+            })
+        }
+    })
+}
 
 function collectData(){
     let fountain = document.getElementById("fountain").value
