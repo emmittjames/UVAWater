@@ -30,13 +30,40 @@ function updateWaterFountains(){
 }
 
 function collectData(){
-    let building = document.getElementById("buildingSelect").value
-    let fountain = document.getElementById("fountainSelect").value
+    const building = document.getElementById("buildingSelect").value
+    const fountain = document.getElementById("fountainSelect").value
+    const temp = selectedTempRating()
+    const flow = selectedFlowRating()
+    if(temp<0 || flow<0){
+        return
+    }
+    
+    var mysql = require('mysql2')
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "2003Esj()",
+        database: "UVAWater"
+    })
+    con.connect(function(err) {
+        if (err) throw err
+        console.log("Connected!")
+        var sql = "CREATE TABLE IF NOT EXISTS reviews (buildingName VARCHAR(255), fountainName VARCHAR(255), flowRating INT, tempRating INT)"
+        con.query(sql, function (err, result) {
+            if (err) throw err
+            console.log("Table created")
+        })
+        sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (" + building + ", " + fountain + ", " + temp + ", " + flow + ")"
+        con.query(sql, function (err, result) {
+            if (err) throw err
+            console.log("Record inserted")
+        })
+    })
+
     console.log(building)
     console.log(fountain)
-
-    console.log("Temp: " + selectedTempRating())
-    console.log("Flow: " + selectedFlowRating())
+    console.log("Temp: " + temp)
+    console.log("Flow: " + flow)
 
     alert("Your response has been recorded. Thank you!")    
 }
