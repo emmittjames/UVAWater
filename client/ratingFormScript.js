@@ -1,5 +1,3 @@
-const { Axios } = require("axios")
-
 var buildingSelect = document.getElementById("buildingSelect")
 var fountainSelect = document.getElementById("fountainSelect")
 const waterFountains = waterFountainData
@@ -45,11 +43,13 @@ function collectData(){
     console.log("Temp: " + temp)
     console.log("Flow: " + flow)
     
-    Axios.post("http://localhost:3000/create", {
+    axios.post("http://localhost:3000/create", {
         building: building, 
-        ountain: fountain, 
+        fountain: fountain, 
         temp: temp, 
         flow: flow
+    }).then(() => {
+        console.log("Successful?")
     })
 
     alert("Your response has been recorded. Thank you!")    
