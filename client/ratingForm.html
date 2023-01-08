@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ratingFormStyles.css">
+    <script src = "ratingFormScript.js" defer></script>
+    <script src = "waterFountainData.js"></script>
+    <script src="https://kit.fontawesome.com/f7bac7fe3b.js" crossorigin="anonymous"></script>
+    <title>Water fountain rating form</title>
+</head>
+<body>
+    <header>
+        <a href="homePage.html"><img class="logo" src="../client/images/logo.png" alt="logo"></a>
+        <div class="navbarLinks">
+            <ul>
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="ratingForm.html">Rate a water fountain</a></li>
+                <li><a href="contactForm.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <form onsubmit = "collectData()">
+        <h1>Water fountain rating form</h1>
+        <h3>Building:</h3>
+        <select name="buildingSelect" id="buildingSelect"></select>
+        <h3>Water fountain:</h3>
+        <select name="fountainSelect" id="fountainSelect"></select>
+        <h3>Temperature rating:</h3>
+        <div class="tempContainer">
+            <input type="radio" name="temp" id="temp5"> 
+            <label for="temp5" class="fas fa-star"></label>
+            <input type="radio" name="temp" id="temp4"> 
+            <label for="temp4" class="fas fa-star"></label>
+            <input type="radio" name="temp" id="temp3"> 
+            <label for="temp3" class="fas fa-star"></label>
+            <input type="radio" name="temp" id="temp2"> 
+            <label for="temp2" class="fas fa-star"></label>
+            <input type="radio" name="temp" id="temp1"> 
+            <label for="temp1" class="fas fa-star"></label>
+        </div>
+        <h3>Flow rating:</h3>
+        <div class="flowContainer">
+            <input type="radio" name="flow" id="flow5"> 
+            <label for="flow5" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow4"> 
+            <label for="flow4" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow3"> 
+            <label for="flow3" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow2"> 
+            <label for="flow2" class="fas fa-star"></label>
+            <input type="radio" name="flow" id="flow1"> 
+            <label for="flow1" class="fas fa-star" ></label>
+        </div>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+</body>
+</html>
