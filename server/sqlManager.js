@@ -18,9 +18,10 @@ con.connect(function(err) {
     console.log("Connected!")
 })
 
-app.get("/reviews", (req, res) => {
-    const sql = "SELECT * FROM reviews"
-    con.query(sql, (err, result) => {
+app.post("/reviews", (req, res) => {
+    const building = req.body.building
+    const sql = "SELECT * FROM reviews WHERE buildingName = ?"
+    con.query(sql, [building], (err, result) => {
         if(err) throw err
         res.send(result)
     })
@@ -42,12 +43,12 @@ app.post("/create", (req, res) => {
 
 app.get("/createdb", (req, res) => {
     let sql = "CREATE TABLE IF NOT EXISTS reviews (buildingName VARCHAR(255), fountainName VARCHAR(255), flowRating INT, tempRating INT)"
-    con.query(sql, function (err, result) {
+    con.query(sql, (err, result) => {
         if (err) throw err
         console.log("Table created");
     })
     sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES ('Rice Hall', '2nd floor', 4, 2)"
-    con.query(sql, function (err, result) {
+    con.query(sql, (err, result) => {
         if (err) throw err
         console.log(result)
         res.send("Insterted rating")
@@ -56,4 +57,9 @@ app.get("/createdb", (req, res) => {
 
 app.listen("3000", () => {
     console.log("Listening on port 3000")
+})
+
+app.get("/cleartable", () => {
+    const sql = "DELETE FROM reviews"
+    con.query(sql)
 })
