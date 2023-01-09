@@ -18,15 +18,23 @@ con.connect(function(err) {
     console.log("Connected!")
 })
 
+app.get("/reviews", (req, res) => {
+    const sql = "SELECT * FROM reviews"
+    con.query(sql, (err, result) => {
+        if(err) throw err
+        res.send(result)
+    })
+})
+
 app.post("/create", (req, res) => {
     const building = req.body.building
     const fountain = req.body.fountain
     const temp = req.body.temp
     const flow = req.body.flow
 
-    let sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (?,?,?,?)"
-    con.query(sql, [building, fountain, temp, flow], function (err, result) {
-        if (err) throw err
+    const sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (?,?,?,?)"
+    con.query(sql, [building, fountain, temp, flow], (err, result) => {
+        if(err) throw err
         console.log(result)
         res.send("Insterted rating")
     })

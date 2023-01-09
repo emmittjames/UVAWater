@@ -1,6 +1,12 @@
-function initMap() {
+function initMap(){
     const map = createMap()
     createMarkers(map)
+}
+
+function getReviews(){
+    axios.get("http://localhost:3000/reviews").then((response) => {
+        console.log(response)
+    })
 }
 
 function createMarkers(map){
@@ -14,6 +20,7 @@ function createMarkers(map){
         })
         marker.addListener("click", () => {
             infoWindow.close();
+            getReviews()
             let html = (
                 "<h2>" + marker.getTitle() + "</h2><h3>" + 
                 "Overall rating: " + "</h3>"
