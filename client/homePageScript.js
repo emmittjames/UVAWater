@@ -3,11 +3,22 @@ function initMap(){
     createMarkers(map)
 }
 
-function getReviews(building){
-    console.log("building: " + building)
+function clearSqlTable(){
+    axios.get("http://localhost:3000/cleartable")
+}
+
+async function getReviews(building){
     axios.post("http://localhost:3000/reviews", {building: building}).then((response) => {
-        console.log(response)
+        return response.data
     })
+}
+
+function getOverallRating(reviewsData){
+    let totalRatings = 0
+    for(let i=0; i<reviewsData.length; i++){
+        totalRatings += (reviewsData[i].tempRating + reviewsData[i].flowRating)/2
+    }
+    return (totalRatings/reviewsData.length)
 }
 
 function createMarkers(map){
@@ -21,7 +32,13 @@ function createMarkers(map){
         })
         marker.addListener("click", () => {
             infoWindow.close();
-            getReviews(marker.getTitle())
+            axios.post("http://localhost:3000/reviews", {building: marker.getTitle()}).then((response) => {
+                const data = response.data
+                console.log(data)
+                const ovr = getOverallRating(data)
+                console.log(ovr)
+                infoWindow.setContent("<h1>" + data[0].fountainName + "</h1>")
+            })
             let html = (
                 "<h2>" + marker.getTitle() + "</h2><h3>" + 
                 "Overall rating: " + "</h3>"
