@@ -7,11 +7,11 @@ function clearSqlTable(){
     axios.get("http://localhost:3000/cleartable")
 }
 
-async function getReviews(building){
+/*function getReviews(building){
     axios.post("http://localhost:3000/reviews", {building: building}).then((response) => {
         return response.data
     })
-}
+}*/
 
 function getOverallRating(reviewsData){
     let totalRatings = 0
@@ -35,24 +35,24 @@ function createMarkers(map){
             axios.post("http://localhost:3000/reviews", {building: marker.getTitle()}).then((response) => {
                 const data = response.data
                 console.log(data)
-                const ovr = getOverallRating(data)
-                console.log(ovr)
+                let overallRating = getOverallRating(data)
+                overallRating = Math.round(overallRating*10)/10
                 infoWindow.setContent("<h1>" + data[0].fountainName + "</h1>")
+                let html = (
+                    "<h2>" + marker.getTitle() + "</h2><h3>" + 
+                    "Overall rating: " + overallRating + " (" + data.length + ")" + "</h3>"
+                )
+                fountainLocations.forEach((location) => {
+                     html += (
+                        "<h4>" + location + " rating: </h4>" +
+                        "Temperature: " + "</div><div>" +
+                        "Water flow: " + "</div><div>" +
+                        "Bottle refill station: " + "</div>"
+                     )   
+                })
+                infoWindow.setContent(html)
+                infoWindow.open(map, marker)
             })
-            let html = (
-                "<h2>" + marker.getTitle() + "</h2><h3>" + 
-                "Overall rating: " + "</h3>"
-            )
-            fountainLocations.forEach((location) => {
-                 html += (
-                    "<h4>" + location + " rating: </h4>" +
-                    "Temperature: " + "</div><div>" +
-                    "Water flow: " + "</div><div>" +
-                    "Bottle refill station: " + "</div>"
-                 )   
-            })
-            infoWindow.setContent(html)
-            infoWindow.open(map, marker)
         })
     })
 }
