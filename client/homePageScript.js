@@ -7,18 +7,40 @@ function clearSqlTable(){
     axios.get("http://localhost:3000/cleartable")
 }
 
-/*function getReviews(building){
-    axios.post("http://localhost:3000/reviews", {building: building}).then((response) => {
-        return response.data
-    })
-}*/
+function round(num){
+    return num.toFixed(1)
+}
 
 function getOverallRating(reviewsData){
-    let totalRatings = 0
-    for(let i=0; i<reviewsData.length; i++){
-        totalRatings += (reviewsData[i].tempRating + reviewsData[i].flowRating)/2
+    if(reviewsData.length === 0){
+        return "N/A"
     }
-    return (totalRatings/reviewsData.length)
+    let totalRating = 0
+    for(let i=0; i<reviewsData.length; i++){
+        totalRating += (reviewsData[i].tempRating + reviewsData[i].flowRating)/2
+    }
+    return round(totalRating/reviewsData.length)
+}
+
+function getLocationRating(reviewsData, location){
+    let totalTemp = 0
+    let totalFlow = 0
+    let counter = 0
+    for(let i=0; i<reviewsData.length; i++){
+        if(reviewsData[i].fountainName === location){
+            console.log("asddsf")
+            totalTemp += reviewsData[i].tempRating
+            totalFlow += reviewsData[i].flowRating
+            counter++
+        }
+    }
+    totalTemp = round(totalTemp/counter)
+    totalFlow = round(totalFlow/counter)
+    let overallRating = round((totalTemp + totalFlow)/2)
+    if(counter === 0){
+        overallRating = totalTemp = totalFlow = "N/A"
+    }
+    return [overallRating, totalTemp, totalFlow, counter]
 }
 
 function createMarkers(map){
@@ -36,18 +58,21 @@ function createMarkers(map){
                 const data = response.data
                 console.log(data)
                 let overallRating = getOverallRating(data)
-                overallRating = Math.round(overallRating*10)/10
-                infoWindow.setContent("<h1>" + data[0].fountainName + "</h1>")
                 let html = (
                     "<h2>" + marker.getTitle() + "</h2><h3>" + 
-                    "Overall rating: " + overallRating + " (" + data.length + ")" + "</h3>"
+                    "Overall rating: " + overallRating + " (" + data.length + ")</h3>"
                 )
                 fountainLocations.forEach((location) => {
+                    const locationRating = getLocationRating(data, location)
+                    console.log(locationRating)
+                    const locationRatingOverall = locationRating[0]
+                    const locationRatingTemp = locationRating[1]
+                    const locationRatingFlow = locationRating[2]
+                    const ratingAmount = locationRating[3]
                      html += (
-                        "<h4>" + location + " rating: </h4>" +
-                        "Temperature: " + "</div><div>" +
-                        "Water flow: " + "</div><div>" +
-                        "Bottle refill station: " + "</div>"
+                        "<h4>" + location + " rating: " + locationRatingOverall + " (" + ratingAmount + ")</h4>" +
+                        "Temperature: " + locationRatingTemp + "</div><div>" +
+                        "Water flow: " + locationRatingFlow + "</div><div>"
                      )   
                 })
                 infoWindow.setContent(html)
