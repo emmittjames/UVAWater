@@ -7,10 +7,6 @@ function clearSqlTable(){
     axios.get("http://localhost:3000/cleartable")
 }
 
-function round(num){
-    return num.toFixed(1)
-}
-
 function getOverallRating(reviewsData){
     if(reviewsData.length === 0){
         return "N/A"
@@ -19,7 +15,7 @@ function getOverallRating(reviewsData){
     for(let i=0; i<reviewsData.length; i++){
         totalRating += (reviewsData[i].tempRating + reviewsData[i].flowRating)/2
     }
-    return round(totalRating/reviewsData.length)
+    return (totalRating/reviewsData.length).toFixed(1)
 }
 
 function getLocationRating(reviewsData, location){
@@ -28,17 +24,21 @@ function getLocationRating(reviewsData, location){
     let counter = 0
     for(let i=0; i<reviewsData.length; i++){
         if(reviewsData[i].fountainName === location){
-            console.log("asddsf")
             totalTemp += reviewsData[i].tempRating
             totalFlow += reviewsData[i].flowRating
             counter++
         }
     }
-    totalTemp = round(totalTemp/counter)
-    totalFlow = round(totalFlow/counter)
-    let overallRating = round((totalTemp + totalFlow)/2)
+    totalTemp = (totalTemp/counter)
+    totalFlow = (totalFlow/counter)
+    let overallRating = ((totalTemp + totalFlow)/2)
     if(counter === 0){
         overallRating = totalTemp = totalFlow = "N/A"
+    }
+    else{
+        totalTemp = totalTemp.toFixed(1)
+        totalFlow = totalFlow.toFixed(1)
+        overallRating = overallRating.toFixed(1)
     }
     return [overallRating, totalTemp, totalFlow, counter]
 }
