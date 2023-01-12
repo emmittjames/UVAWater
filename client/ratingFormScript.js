@@ -8,6 +8,7 @@ waterFountains.forEach(([coords, name, fountainLocations]) => {
     buildingSelect.appendChild(option)
 })
 updateWaterFountains()
+const BACKEND_URL = "https://uvawater.up.railway.app/api"
 
 document.querySelector("#buildingSelect").addEventListener("change",function(){
     updateWaterFountains()
@@ -43,7 +44,7 @@ function collectData(){
     console.log("Temp: " + temp)
     console.log("Flow: " + flow)
     
-    axios.post("http://localhost:3000/create", {
+    axios.post(BACKEND_URL + "/create", {
         building: building, 
         fountain: fountain, 
         temp: temp, 

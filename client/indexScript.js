@@ -1,10 +1,8 @@
+const BACKEND_URL = "https://uvawater.up.railway.app/api"
+
 function initMap(){
     const map = createMap()
     createMarkers(map)
-}
-
-function clearSqlTable(){
-    axios.get("http://localhost:3000/cleartable")
 }
 
 function getOverallRating(reviewsData){
@@ -54,7 +52,7 @@ function createMarkers(map){
         })
         marker.addListener("click", () => {
             infoWindow.close();
-            axios.post("http://localhost:3000/reviews", {building: marker.getTitle()}).then((response) => {
+            axios.post(BACKEND_URL + "/reviews", {building: marker.getTitle()}).then((response) => {
                 const data = response.data
                 console.log(data)
                 let overallRating = getOverallRating(data)

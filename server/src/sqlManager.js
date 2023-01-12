@@ -8,13 +8,14 @@ app.use(cors())
 app.use(express.json())
 
 const con = mysql.createConnection(process.env.DATABASE_URL)
+const BACKEND_URL = "https://uvawater.up.railway.app/api"
   
 con.connect(function(err) {
     if (err) throw err
     console.log("Connected!")
 })
 
-app.post("/reviews", (req, res) => {
+app.post(BACKEND_URL + "/reviews", (req, res) => {
     const building = req.body.building
     const sql = "SELECT * FROM reviews WHERE buildingName = ?"
     con.query(sql, [building], (err, result) => {
@@ -23,7 +24,7 @@ app.post("/reviews", (req, res) => {
     })
 })
 
-app.post("/create", (req, res) => {
+app.post(BACKEND_URL + "/create", (req, res) => {
     let sql = "CREATE TABLE IF NOT EXISTS reviews (buildingName VARCHAR(255), fountainName VARCHAR(255), flowRating INT, tempRating INT)"
     con.query(sql, (err, result) => {
         if (err) throw err
@@ -45,9 +46,4 @@ app.post("/create", (req, res) => {
 
 app.listen(process.env.MYSQL_PORT || "3000", () => {
     console.log("Listening on port 3000")
-})
-
-app.get("/cleartable", () => {
-    const sql = "DELETE FROM reviews"
-    con.query(sql)
 })
