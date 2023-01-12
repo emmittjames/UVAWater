@@ -49,7 +49,7 @@ function collectData(){
         temp: temp, 
         flow: flow
     }).then(() => {
-        console.log("Successful?")
+        console.log("Successful")
     })
 
     alert("Your response has been recorded. Thank you!")    
