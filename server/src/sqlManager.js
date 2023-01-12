@@ -7,13 +7,6 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-/*const con = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
-});*/
-
 const con = mysql.createConnection(process.env.DATABASE_URL)
   
 con.connect(function(err) {
