@@ -3,3 +3,4 @@ const waterFountainData = [
     [{ lat: 38.0316, lng: -78.5108 }, "Rice Hall", ["1st floor", "2nd floor", "3rd floor", "3th floor", "5th floor"]],
     [{ lat: 38.0364, lng: -78.5061 }, "Clemons Library", ["1st floor", "2nd floor", "3rd floor", "4th floor"]]
 ]
+const BACKEND_URL = "https://uvawater.up.railway.app/api"

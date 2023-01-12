@@ -16,6 +16,7 @@ con.connect(function(err) {
 })
 
 app.post(BACKEND_URL + "/reviews", (req, res) => {
+    res.send("Reviews endpoint")
     const building = req.body.building
     const sql = "SELECT * FROM reviews WHERE buildingName = ?"
     con.query(sql, [building], (err, result) => {
@@ -25,6 +26,7 @@ app.post(BACKEND_URL + "/reviews", (req, res) => {
 })
 
 app.post(BACKEND_URL + "/create", (req, res) => {
+    res.send("Create endpoint")
     let sql = "CREATE TABLE IF NOT EXISTS reviews (buildingName VARCHAR(255), fountainName VARCHAR(255), flowRating INT, tempRating INT)"
     con.query(sql, (err, result) => {
         if (err) throw err
@@ -45,5 +47,5 @@ app.post(BACKEND_URL + "/create", (req, res) => {
 })
 
 app.listen(process.env.MYSQL_PORT || "3000", () => {
-    console.log("Listening on port 3000")
+    console.log("Listening on port " + process.env.MYSQL_PORT)
 })

@@ -8,7 +8,6 @@ waterFountains.forEach(([coords, name, fountainLocations]) => {
     buildingSelect.appendChild(option)
 })
 updateWaterFountains()
-const BACKEND_URL = "https://uvawater.up.railway.app/api"
 
 document.querySelector("#buildingSelect").addEventListener("change",function(){
     updateWaterFountains()

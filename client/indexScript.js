@@ -1,5 +1,3 @@
-const BACKEND_URL = "https://uvawater.up.railway.app/api"
-
 function initMap(){
     const map = createMap()
     createMarkers(map)
