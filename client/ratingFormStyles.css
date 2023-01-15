@@ -3,7 +3,6 @@
 }
 
 body{
-    overflow: hidden;
     font-family: 'poppins', sans-serif;
     display: flex;
     flex-direction: column;

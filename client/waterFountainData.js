@@ -10,5 +10,4 @@ const waterFountainData = [
     [{ lat: 38.0321, lng: -78.5113 }, "Small Hall", ["1st floor"]],
     [{ lat: 38.0342, lng: -78.5101 }, "Physics Building", ["Basement", "1st floor", "2nd floor", "3rd floor"]],
 ]
-//const BACKEND_URL = "https://uvawater.up.railway.app"
 const BACKEND_URL = "https://breakable-bell-bottoms-moth.cyclic.app"

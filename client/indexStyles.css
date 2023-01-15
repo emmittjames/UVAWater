@@ -20,8 +20,8 @@ header{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    height: 10vh;
     background-color: #646262;
+    z-index: 1000;
 }
 
 header a .logo{
@@ -52,7 +52,55 @@ header .navbarLinks ul li a{
     display: block;
 }
 
+.hamburgerToggle{
+    position: absolute;
+    top: 2.5vh;
+    right: 2.5vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 38px;
+}
+
+.hamburgerToggle .bar{
+    height: 8px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
 #map {
     height: 90vh;
     width: 100%;
+}
+
+@media (max-width: 700px) {
+    header{
+        flex-direction: column;
+    }
+
+    header a .logo{
+        height: 5vh;
+        margin: 2.5vh;
+    }
+
+    header .navbarLinks{
+        display: none;
+        width: 100%;
+    }
+
+    header .navbarLinks ul{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    header .navbarLinks ul li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburgerToggle{
+        display: flex;
+    }
 }
