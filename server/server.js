@@ -8,7 +8,6 @@ app.use(cors())
 app.use(express.json())
 
 const con = mysql.createConnection(process.env.DATABASE_URL)
-const BACKEND_URL = ""
   
 con.connect(function(err){
     if (err) throw err
