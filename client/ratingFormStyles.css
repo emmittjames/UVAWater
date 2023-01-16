@@ -12,44 +12,6 @@ body{
     height: auto;
 }
 
-header{
-    position: absolute;
-    align-items: center;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    height: 10vh;
-    background-color: #646262;
-}
-
-header a .logo{
-    padding-left: 1vw;
-    height:5vh;
-}
-
-header .navbarLinks ul{
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-header .navbarLinks ul li{
-    list-style: none;
-}
-
-header .navbarLinks ul li:hover{
-    background-color: #737373;
-}
-
-header .navbarLinks ul li a{
-    text-decoration: none;
-    color: white;
-    padding: 3.3vh;
-    font-size: 3vh;
-    display: block;
-}
-
 form{
     display: flex;
     flex-direction: column;
@@ -112,4 +74,95 @@ form button{
     outline: none;
     cursor: pointer;
     color: white;
+}
+
+header{
+    position: absolute;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #646262;
+    z-index: 1000;
+}
+
+header a .logo{
+    padding-left: 1vw;
+    height: 5vh;
+}
+
+header .navbarLinks ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+header .navbarLinks ul li{
+    list-style: none;
+}
+
+header .navbarLinks ul li:hover{
+    background-color: #737373;
+}
+
+header .navbarLinks ul li a{
+    text-decoration: none;
+    color: white;
+    padding: 3.3vh;
+    font-size: 3vh;
+    display: block;
+}
+
+.hamburgerToggle{
+    position: absolute;
+    top: 2.5vh;
+    right: 2.5vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45px;
+    height: 38px;
+}
+
+.hamburgerToggle .bar{
+    height: 8px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    header{
+        flex-direction: column;
+    }
+
+    header a .logo{
+        height: 5vh;
+        margin: 2.5vh;
+    }
+
+    header .navbarLinks{
+        display: none;
+        width: 100%;
+    }
+
+    header .navbarLinks ul{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    header .navbarLinks ul li{
+        width: 100%;
+        text-align: center;
+    }
+
+    header .navbarLinks.active{
+        display: flex;
+    }
+
+    .hamburgerToggle{
+        display: flex;
+    }
 }

@@ -1,9 +1,3 @@
-const hamburgerToggle = document.getElementsByClassName("hamburgerToggle")[0]
-const navbarLinks = document.getElementsByClassName("navbarLinks")[0]
-hamburgerToggle.addEventListener("click", () => {
-    navbarLinks.classList.toggle("active")
-})
-
 function initMap(){
     const map = createMap()
     createMarkers(map)
@@ -108,3 +102,9 @@ function createMap(){
 }
 
 window.initMap = initMap;
+
+const hamburgerToggle = document.getElementsByClassName("hamburgerToggle")[0]
+const navbarLinks = document.getElementsByClassName("navbarLinks")[0]
+hamburgerToggle.addEventListener("click", () => {
+    navbarLinks.classList.toggle("active")
+})

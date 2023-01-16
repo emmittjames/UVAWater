@@ -13,6 +13,11 @@ body{
     height: auto;
 }
 
+#map {
+    height: 90vh;
+    width: 100%;
+}
+
 header{
     position: absolute;
     align-items: center;
@@ -59,20 +64,15 @@ header .navbarLinks ul li a{
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 40px;
+    width: 45px;
     height: 38px;
 }
 
 .hamburgerToggle .bar{
-    height: 8px;
+    height: 7px;
     width: 100%;
     background-color: white;
     border-radius: 10px;
-}
-
-#map {
-    height: 90vh;
-    width: 100%;
 }
 
 @media (max-width: 700px) {
