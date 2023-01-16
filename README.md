@@ -38,4 +38,8 @@ DATABASE_URL={
 }
 BACKEND_URL='https://localhost:3000'
 ```
-5. Everything should be up and running if you go to https://localhost:3000
+5. Go into /client/waterFountainData.js and replace the current value of BACKEND_URL with this:
+```
+const BACKEND_URL = "https://localhost:3000"
+```
+6. Everything should be up and running on your [local host](https://localhost:3000)
