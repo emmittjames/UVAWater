@@ -146,4 +146,8 @@ header .navbarLinks ul li a{
     .hamburgerToggle{
         display: flex;
     }
+
+    form button{
+        width: 30vw;
+    }
 }

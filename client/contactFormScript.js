@@ -6,19 +6,6 @@ function sendEmail(){
         console.log("Email successful")
     })
 
-    /*Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "yeeyeehaircut2003@gmail.com",
-        Password: "Emmitt123!",
-        To: 'emmittjames1@gmail.com',
-        From: "yeeyeehaircut2003@gmail.com",
-        Subject: "Sending Email using javascript",
-        Body: message,
-    })
-    .then(function (message) {
-        console.log("Email sent successfully")
-    });*/
-
     alert("Thank you for your feedback")
 }
 
