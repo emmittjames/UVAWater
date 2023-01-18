@@ -169,6 +169,14 @@ header .navbarLinks ul li a{
         display: flex;
     }
 
+    form h1{
+        font-size: 6vw;
+    }
+
+    form select{
+        width: 60vw;
+    }
+
     form button{
         width: 30vw;
     }
