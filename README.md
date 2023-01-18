@@ -3,7 +3,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup](#setup)
+* [Cloning](#cloning)
 
 ## General info
 #### Website link: [uvawater.net](https://uvawater.net)
@@ -26,8 +26,8 @@ Project hosted with:
 
 ## Cloning
 1. Clone the repository
-2. Download and set up MySQL on your machine and create a database
-3. Create a .env file and put it into the root directory
+2. [Download](https://dev.mysql.com/downloads/mysql) and set up MySQL on your machine and create a database
+3. Create a .env file and put it into the server directory
 4. Put this code into the .env file using your MySQL credentials:
 ```
 DATABASE_URL={
@@ -38,4 +38,8 @@ DATABASE_URL={
 }
 BACKEND_URL='https://localhost:3000'
 ```
-5. Everything should be up and running if you go to https://localhost:3000
+5. Go into /client/waterFountainData.js and replace the current value of BACKEND_URL with this:
+```
+const BACKEND_URL = "https://localhost:3000"
+```
+6. Everything should be up and running on your [local host](https://localhost:3000)
