@@ -1,5 +1,6 @@
 function initMap(){
     const map = createMap()
+    addCurrentPositionMarker(map)
     createMarkers(map)
 }
 
@@ -46,7 +47,7 @@ function createMarkers(map){
         const marker = new google.maps.Marker({
             position: coords,
             map: map,
-            title: name
+            title: name,
         })
         marker.addListener("click", () => {
             infoWindow.close();
@@ -80,6 +81,26 @@ function createMarkers(map){
 
 function convertRating(rating){
     return "★"
+}
+
+function addCurrentPositionMarker(map){
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: "Current location",
+                icon: "./images/locationMarker.png",
+              });
+        });
+    }
+    else{
+        console.log("Location not found")
+    }
 }
 
 function createMap(){
