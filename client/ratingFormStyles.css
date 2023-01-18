@@ -28,6 +28,11 @@ form h1{
     overflow: hidden;
 }
 
+form h3{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .tempContainer, .flowContainer{
     display: flex;
     flex-direction: row-reverse;
