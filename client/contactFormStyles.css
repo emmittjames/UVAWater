@@ -147,7 +147,9 @@ header .navbarLinks ul li a{
         display: flex;
     }
 
-    
+    form textarea{
+        width: 80vw;
+    }
 
     form button{
         width: 30vw;
