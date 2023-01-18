@@ -50,7 +50,7 @@ function createMarkers(map){
         })
         marker.addListener("click", () => {
             infoWindow.close();
-            axios.post(BACKEND_URL + "/reviews", {building: marker.getTitle()}).then((response) => {
+            axios.post(BACKEND_URL + "/api/reviews", {building: marker.getTitle()}).then((response) => {
                 const data = response.data
                 console.log(data)
                 let overallRating = getOverallRating(data)

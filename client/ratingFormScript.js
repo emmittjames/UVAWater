@@ -43,7 +43,7 @@ function collectData(){
     console.log("Temp: " + temp)
     console.log("Flow: " + flow)
     
-    axios.post(BACKEND_URL + "/create", {
+    axios.post(BACKEND_URL + "/api/create", {
         building: building, 
         fountain: fountain, 
         temp: temp, 

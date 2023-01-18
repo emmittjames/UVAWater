@@ -14,7 +14,7 @@ con.connect(function(err){
     console.log("Connected!")
 })
 
-app.post(BACKEND_URL + "/reviews", (req, res) => {
+app.post("/api/reviews", (req, res) => {
     const building = req.body.building
     const sql = "SELECT * FROM reviews WHERE buildingName = ?"
     con.query(sql, [building], (err, result) => {
@@ -23,7 +23,7 @@ app.post(BACKEND_URL + "/reviews", (req, res) => {
     })
 })
 
-app.post(BACKEND_URL + "/create", (req, res) => {
+app.post("/api/create", (req, res) => {
     const building = req.body.building
     const fountain = req.body.fountain
     const temp = req.body.temp
