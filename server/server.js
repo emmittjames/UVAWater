@@ -1,6 +1,7 @@
 const mysql = require("mysql2")
 const express = require("express")
 const cors = require("cors")
+const nodemailer = require("nodemailer");
 require("dotenv").config({ path: "./.env" })
 
 const app = express()
@@ -12,6 +13,11 @@ const con = mysql.createConnection(process.env.DATABASE_URL)
 con.connect(function(err){
     if (err) throw err
     console.log("Connected!")
+})
+
+const PORT = process.env.PORT || "3000"
+app.listen(PORT, () => {
+    console.log("Listening on port " + PORT)
 })
 
 app.post("/api/reviews", (req, res) => {
@@ -37,7 +43,26 @@ app.post("/api/create", (req, res) => {
     })
 })
 
-const PORT = process.env.PORT || "3000"
-app.listen(PORT, () => {
-    console.log("Listening on port " + PORT)
+app.post("/email", (req, res) => {
+    const message = req.body.message
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'yeeyeehaircut2003@gmail.com',
+            pass: 'Emmitt123!'
+        }
+    });
+    var mailOptions = {
+        from: 'yeeyeehaircut2003@gmail.com',
+        to: 'emmittjames1@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: message
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+    });
 })
