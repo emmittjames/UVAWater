@@ -37,12 +37,11 @@ function collectData(){
     if(temp<0 || flow<0){
         return
     }
-
     console.log(building)
     console.log(fountain)
     console.log("Temp: " + temp)
     console.log("Flow: " + flow)
-    
+
     axios.post(BACKEND_URL + "/api/create", {
         building: building, 
         fountain: fountain, 
@@ -51,7 +50,6 @@ function collectData(){
     }).then(() => {
         console.log("Successful")
     })
-
     alert("Your response has been recorded. Thank you!")    
 }
 
