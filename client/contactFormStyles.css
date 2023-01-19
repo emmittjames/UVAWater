@@ -34,7 +34,7 @@ form h1{
 form textarea{
     font-family: 'poppins', sans-serif;
     font-size: 1em;
-    width: 100%;
+    width: 50vw;
     height: 30vh;
     padding-top:10px;
     margin-bottom: 2vh;
