@@ -49,32 +49,36 @@ function createMarkers(map){
             map: map,
             title: name,
         })
-        marker.addListener("click", () => {
-            infoWindow.close();
-            axios.post(BACKEND_URL + "/api/reviews", {building: marker.getTitle()}).then((response) => {
-                const data = response.data
-                console.log(data)
-                let overallRating = getOverallRating(data)
-                let html = (
-                    "<h2>" + marker.getTitle() + "</h2><h3>" + 
-                    "Overall rating: " + overallRating + " (" + data.length + ")</h3>"
-                )
-                fountainLocations.forEach((location) => {
-                    const locationRating = getLocationRating(data, location)
-                    console.log(locationRating)
-                    const locationRatingOverall = locationRating[0]
-                    const locationRatingTemp = locationRating[1]
-                    const locationRatingFlow = locationRating[2]
-                    const ratingAmount = locationRating[3]
-                     html += (
-                        "<h4>" + location + " rating: " + locationRatingOverall + " (" + ratingAmount + ")</h4>" +
-                        "Temperature: " + locationRatingTemp + "</div><div>" +
-                        "Water flow: " + locationRatingFlow + "</div><div>"
-                     )   
-                })
-                infoWindow.setContent(html)
-                infoWindow.open(map, marker)
+        markerInfowindowListener(marker, infoWindow, fountainLocations)
+    })
+}
+
+function markerInfowindowListener(marker, infoWindow, fountainLocations){
+    marker.addListener("click", () => {
+        infoWindow.close();
+        axios.post(BACKEND_URL + "/api/reviews", {building: marker.getTitle()}).then((response) => {
+            const data = response.data
+            console.log(data)
+            let overallRating = getOverallRating(data)
+            let html = (
+                "<h2>" + marker.getTitle() + "</h2><h3>" + 
+                "Overall rating: " + overallRating + " (" + data.length + ")</h3>"
+            )
+            fountainLocations.forEach((location) => {
+                const locationRating = getLocationRating(data, location)
+                console.log(locationRating)
+                const locationRatingOverall = locationRating[0]
+                const locationRatingTemp = locationRating[1]
+                const locationRatingFlow = locationRating[2]
+                const ratingAmount = locationRating[3]
+                 html += (
+                    "<h4>" + location + " rating: " + locationRatingOverall + " (" + ratingAmount + ")</h4>" +
+                    "Temperature: " + locationRatingTemp + "</div><div>" +
+                    "Water flow: " + locationRatingFlow + "</div><div>"
+                 )   
             })
+            infoWindow.setContent(html)
+            infoWindow.open(map, marker)
         })
     })
 }

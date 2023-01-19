@@ -48,12 +48,12 @@ app.post("/email", (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'yeeyeehaircut2003@gmail.com',
-            pass: 'Emmitt123!'
+            user: 'uvawater123@gmail.com',
+            pass: 'dfuenvgasvuwyoza'
         }
     });
     var mailOptions = {
-        from: 'yeeyeehaircut2003@gmail.com',
+        from: 'uvawater123@gmail.com',
         to: 'emmittjames1@gmail.com',
         subject: 'Sending Email using Node.js',
         text: message
@@ -62,7 +62,7 @@ app.post("/email", (req, res) => {
         if (error) {
             console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+          console.log('Email sent');
         }
     });
 })

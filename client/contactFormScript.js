@@ -5,8 +5,6 @@ function sendEmail(){
     }).then(() => {
         console.log("Email successful")
     })
-
-    alert("Thank you for your feedback")
 }
 
 const hamburgerToggle = document.getElementsByClassName("hamburgerToggle")[0]
