@@ -1,6 +1,8 @@
 var buildingSelect = document.getElementById("buildingSelect")
 var fountainSelect = document.getElementById("fountainSelect")
-const waterFountains = waterFountainData
+const waterFountains = waterFountainData.sort()
+waterFountains.push(waterFountains.splice(0, 1)[0]);    //Pushes 1515 to the back
+
 waterFountains.forEach(([coords, name, fountainLocations]) => {
     var option = document.createElement("option")
     option.value = name
