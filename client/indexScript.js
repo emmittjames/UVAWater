@@ -112,7 +112,7 @@ function createCurrentLocationButton(map){
     const locationButton = document.createElement("button");
     locationButton.textContent = "Current Location";
     locationButton.classList.add("custom-map-control-button");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationButton);
     locationButton.addEventListener("click", () => {
         if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
