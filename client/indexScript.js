@@ -2,6 +2,7 @@ function initMap(){
     const map = createMap()
     addCurrentPositionMarker(map)
     createMarkers(map)
+    createCurrentLocationButton(map)
 }
 
 function getOverallRating(reviewsData){
@@ -107,8 +108,32 @@ function addCurrentPositionMarker(map){
     }
 }
 
+function createCurrentLocationButton(map){
+    const locationButton = document.createElement("button");
+    locationButton.textContent = "Current Location";
+    locationButton.classList.add("custom-map-control-button");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    locationButton.addEventListener("click", () => {
+        if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            }
+            map.setCenter(pos)
+            map.setZoom(16)
+        },
+        () => {
+            alert("Location services unavailable")
+        })} 
+        else {
+            alert("Location services unavailable")
+        }
+    })
+}
+
 function createMap(){
-    const uvaCoords = { lat: 38.0336, lng: -78.5080 }
+    const uvaCoords = { lat: 38.0342, lng: -78.5080 }
     let myStyles =[
         {
             featureType: "poi",
