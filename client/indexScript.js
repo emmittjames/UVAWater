@@ -1,3 +1,5 @@
+window.initMap = initMap;
+
 function initMap(){
     const map = createMap()
     addCurrentPositionMarker(map)
@@ -150,8 +152,6 @@ function createMap(){
     })
     return map
 }
-
-window.initMap = initMap;
 
 const hamburgerToggle = document.getElementsByClassName("hamburgerToggle")[0]
 const navbarLinks = document.getElementsByClassName("navbarLinks")[0]
