@@ -1,9 +1,10 @@
 # [UVA Water](https://uvawater.net)
 
 ## Table of contents
-* [General info](#general-info)
+* [General Info](#general-info)
 * [Technologies](#technologies)
 * [Cloning](#cloning)
+* [Sample Images](#sample-images)
 
 ## General info
 #### Website link: [uvawater.net](https://uvawater.net)
@@ -43,3 +44,14 @@ BACKEND_URL='https://localhost:3000'
 const BACKEND_URL = "https://localhost:3000"
 ```
 6. Everything should be up and running on your [local host](https://localhost:3000)
+
+## Sample Images
+
+#### Viewing ratings on the map
+<img width="1440" alt="Viewing ratings" src="https://user-images.githubusercontent.com/90576219/216737244-dd2f58f1-1dfe-47fb-bbb1-f2856571b41e.png">
+
+#### Submitting a water fountain rating
+<img width="1440" alt="Submitting rating" src="https://user-images.githubusercontent.com/90576219/216737257-750f673f-5447-4047-9f72-cd9d08849670.png">
+
+#### Giving feedback on the site
+<img width="1440" alt="Submitting feedback" src="https://user-images.githubusercontent.com/90576219/216737404-2fcf3b53-143b-4d7b-8227-9dcc17d944c9.png">
