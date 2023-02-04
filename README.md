@@ -6,7 +6,7 @@
 * [Cloning](#cloning)
 * [Sample Images](#sample-images)
 
-## General info
+## General Info
 #### Website link: [uvawater.net](https://uvawater.net)
 This website will allow users to view ratings for all of the water foutnains around grounds at UVA by clicking on markers displayed on a map. Users can also submit their own ratings via a rating form or any other kind of feedback via a contact form.
 	
