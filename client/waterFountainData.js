@@ -19,6 +19,7 @@ const waterFountainData = [
     [{ lat: 38.0378, lng: -78.5070 }, "Memorial Gymnasium", ["Basement", "1st floor"]],
     [{ lat: 38.0329, lng: -78.5136 }, "Aquatics and Fitness Center", ["1st floor", "2nd floor"]],
     [{ lat: 38.0348, lng: -78.5064 }, "Monroe Hall", ["1st floor", "2nd floor"]],
+    [{ lat: 38.0327, lng: -78.5110 }, "Mechanical Engineering Building", ["Basement", "1st floor", "2nd floor", "3rd floor"]],
 ]
 
 const BACKEND_URL = "https://breakable-bell-bottoms-moth.cyclic.app"
