@@ -112,6 +112,7 @@ function addCurrentPositionMarker(map){
 
 function createCurrentLocationButton(map){
     const locationButton = document.createElement("button");
+    locationButton.style.color = "black";
     locationButton.textContent = "Current Location";
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationButton);
