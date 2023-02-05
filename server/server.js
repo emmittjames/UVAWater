@@ -55,7 +55,7 @@ app.post("/email", (req, res) => {
     var mailOptions = {
         from: 'uvawater123@gmail.com',
         to: 'emmittjames1@gmail.com',
-        subject: 'Sending Email using Node.js',
+        subject: 'UVA Water Email',
         text: message
     };
     transporter.sendMail(mailOptions, function(error, info){
