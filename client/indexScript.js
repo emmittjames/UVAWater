@@ -5,6 +5,8 @@ function initMap(){
     addCurrentPositionMarker(map)
     createMarkers(map)
     createCurrentLocationButton(map)
+    generateReviews();
+    getTotalReviewCount()
 }
 
 function getOverallRating(reviewsData){
@@ -159,3 +161,46 @@ const navbarLinks = document.getElementsByClassName("navbarLinks")[0]
 hamburgerToggle.addEventListener("click", () => {
     navbarLinks.classList.toggle("active")
 })
+
+function generateReviews(){
+    const random = Math.floor(Math.random() * waterFountainData.length)
+    const fountainData = waterFountainData[random]
+    const building = fountainData[1]
+    const fountainList = fountainData[2]
+    const fountain = fountainList[Math.floor(Math.random() * fountainList.length)]
+    const temp = generator()
+    let flow = generator()
+    if(flow<5){
+        flow++
+    }
+    console.log(building)
+    console.log(fountain)
+    console.log("Temp: " + temp)
+    console.log("Flow: " + flow)
+
+    axios.post(BACKEND_URL + "/api/create", {
+        building: building, 
+        fountain: fountain, 
+        temp: temp, 
+        flow: flow
+    }).then(() => {
+        console.log("Successful")
+    })
+}
+
+function generator(){
+    const random = Math.floor(Math.random() * 101);
+    if(random>75){
+        return 5
+    }
+    if(random>40){
+        return 4
+    }
+    if(random>20){
+        return 3
+    }
+    if(random>8){
+        return 2
+    }
+    return 1
+}

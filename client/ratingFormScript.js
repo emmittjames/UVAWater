@@ -49,8 +49,8 @@ function collectData(){
         fountain: fountain, 
         temp: temp, 
         flow: flow
-    }).then(() => {
-        console.log("Successful")
+    }).then((result) => {
+        console.log(result)
     })
     alert("Your response has been recorded. Thank you!")    
 }
