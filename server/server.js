@@ -35,11 +35,18 @@ app.post("/api/create", (req, res) => {
     const temp = req.body.temp
     const flow = req.body.flow
 
-    sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (?,?,?,?)"
+    const sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (?,?,?,?)"
     con.query(sql, [building, fountain, temp, flow], (err, result) => {
         if(err) throw err
-        console.log(result)
-        res.send("Insterted rating")
+        res.send(result)
+    })
+})
+
+app.post("/api/totalreviews", (req, res) => {
+    const sql = "SELECT COUNT(*) FROM reviews"
+    con.query(sql, (err, result) => {
+        if(err) throw err
+        res.send(result)
     })
 })
 

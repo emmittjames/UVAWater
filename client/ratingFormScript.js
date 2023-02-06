@@ -49,10 +49,10 @@ function collectData(){
         fountain: fountain, 
         temp: temp, 
         flow: flow
-    }).then((result) => {
-        console.log(result)
+    }).then((response) => {
+        console.log(response)
     })
-    alert("Your response has been recorded. Thank you!")    
+    alert("Your response has been recorded. Thank you!")   
 }
 
 function selectedTempRating(){
