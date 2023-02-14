@@ -8,6 +8,7 @@
 
 ## General Info
 #### Website link: [uvawater.net](https://uvawater.net)
+#### UVA Water News Article: [https://dailyprogress.com/news/uva/new-student-developed-website-lets-you-review-uva-drinking-fountains/article_2a4e5730-a65b-11ed-9514-6f3450e7cd00.html](https://dailyprogress.com/news/uva/new-student-developed-website-lets-you-review-uva-drinking-fountains/article_2a4e5730-a65b-11ed-9514-6f3450e7cd00.html)
 This website will allow users to view ratings for all of the water foutnains around grounds at UVA by clicking on markers displayed on a map. Users can also submit their own ratings via a rating form or any other kind of feedback via a contact form.
 	
 ## Technologies
