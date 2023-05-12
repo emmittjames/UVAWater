@@ -56,3 +56,6 @@ const BACKEND_URL = "https://localhost:3000"
 
 #### Giving feedback on the site
 <img width="1440" alt="Submitting feedback" src="https://user-images.githubusercontent.com/90576219/216737404-2fcf3b53-143b-4d7b-8227-9dcc17d944c9.png">
+
+## License
+Distributed under the MIT License. See ```LICENSE``` for more information
