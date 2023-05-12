@@ -5,6 +5,7 @@
 * [Technologies](#technologies)
 * [Cloning](#cloning)
 * [Sample Images](#sample-images)
+* [License](#license)
 
 ## General Info
 #### Website link: [uvawater.net](https://uvawater.net)
