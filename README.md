@@ -45,7 +45,7 @@ BACKEND_URL='https://localhost:3000'
 ```
 const BACKEND_URL = "https://localhost:3000"
 ```
-6. Everything should be up and running on your [local host](https://localhost:3000)
+6. Everything should be up and running on your [localhost](https://localhost:3000)
 
 ## Sample Images
 
