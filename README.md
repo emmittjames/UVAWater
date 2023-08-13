@@ -15,8 +15,8 @@ This website allows users to view ratings for water foutnains around grounds at 
 ## Technologies
 Project created with:
 * JavaScript
-* HTML5
-* CSS3
+* HTML
+* CSS
 * Node.js
 * Express.js
 * MySQL
