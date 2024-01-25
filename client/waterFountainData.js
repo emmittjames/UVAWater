@@ -17,7 +17,7 @@ const waterFountainData = [
     [{ lat: 38.0328, lng: -78.5123 }, "Physical and Life Sciences Building", ["Basement", "1st floor", "2nd floor", "3rd floor", "4th floor"]],
     [{ lat: 38.0333, lng: -78.5112 }, "Wilsdorf Hall", ["Basement", "1st floor", "2nd floor"]],
     [{ lat: 38.0378, lng: -78.5070 }, "Memorial Gymnasium", ["Basement", "1st floor"]],
-    [{ lat: 38.0329, lng: -78.5136 }, "Aquatics and Fitness Center", ["1st floor", "2nd floor"]],
+    [{ lat: 38.0329, lng: -78.5136 }, "Aquatics and Fitness Center", ["Basement", "1st floor entrance", "1st floor weight room near basketball courts", "1st floor weight room near bathrooms", "2nd floor"]],
     [{ lat: 38.0348, lng: -78.5064 }, "Monroe Hall", ["1st floor", "2nd floor"]],
     [{ lat: 38.0327, lng: -78.5110 }, "Mechanical Engineering Building", ["Basement", "1st floor", "2nd floor", "3rd floor"]],
     [{ lat: 38.0334, lng: -78.5052 }, "Cocke Hall", ["Basement", "1st floor"]],
