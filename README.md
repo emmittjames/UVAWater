@@ -5,6 +5,7 @@
 * [Technologies](#technologies)
 * [Cloning](#cloning)
 * [Sample Images](#sample-images)
+* [License](#license)
 
 ## General Info
 #### Website link: [uvawater.net](https://uvawater.net)
@@ -14,8 +15,8 @@ This website allows users to view ratings for water foutnains around grounds at 
 ## Technologies
 Project created with:
 * JavaScript
-* HTML5
-* CSS3
+* HTML
+* CSS
 * Node.js
 * Express.js
 * MySQL
@@ -44,7 +45,7 @@ BACKEND_URL='https://localhost:3000'
 ```
 const BACKEND_URL = "https://localhost:3000"
 ```
-6. Everything should be up and running on your [local host](https://localhost:3000)
+6. Everything should be up and running on your [localhost](https://localhost:3000)
 
 ## Sample Images
 
@@ -56,3 +57,6 @@ const BACKEND_URL = "https://localhost:3000"
 
 #### Giving feedback on the site
 <img width="1440" alt="Submitting feedback" src="https://user-images.githubusercontent.com/90576219/216737404-2fcf3b53-143b-4d7b-8227-9dcc17d944c9.png">
+
+## License
+Distributed under the MIT License. See ```LICENSE``` for more information
