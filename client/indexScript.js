@@ -14,6 +14,9 @@ function getOverallRating(reviewsData){
     let totalRating = 0
     for(let i=0; i<reviewsData.length; i++){
         totalRating += (reviewsData[i].tempRating + reviewsData[i].flowRating)/2
+        console.log("totalRating loop: " + totalRating)
+        console.log("tempRating loop: " + reviewsData[i].tempRating)
+        console.log("flowRating loop: " + reviewsData[i].flowRating)
     }
     return (totalRating/reviewsData.length).toFixed(1)
 }
@@ -67,6 +70,7 @@ function markerInfowindowListener(marker, infoWindow, fountainLocations){
             const data = response.data
             console.log(data)
             let overallRating = getOverallRating(data)
+            console.log(overallRating)
             let html = (
                 "<h2>" + marker.getTitle() + "</h2><h3>" + 
                 "Overall rating: " + overallRating + " (" + data.length + ")</h3>"
