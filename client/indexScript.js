@@ -13,7 +13,7 @@ function getOverallRating(reviewsData){
     }
     let totalRating = 0
     for(let i=0; i<reviewsData.length; i++){
-        totalRating += (reviewsData[i].tempRating + reviewsData[i].flowRating)/2
+        totalRating += (reviewsData[i].temprating + reviewsData[i].flowrating)/2
     }
     return (totalRating/reviewsData.length).toFixed(1)
 }
@@ -23,9 +23,9 @@ function getLocationRating(reviewsData, location){
     let totalFlow = 0
     let counter = 0
     for(let i=0; i<reviewsData.length; i++){
-        if(reviewsData[i].fountainName === location){
-            totalTemp += reviewsData[i].tempRating
-            totalFlow += reviewsData[i].flowRating
+        if(reviewsData[i].fountainname === location){
+            totalTemp += reviewsData[i].temprating
+            totalFlow += reviewsData[i].flowrating
             counter++
         }
     }
@@ -61,7 +61,6 @@ function markerInfowindowListener(marker, infoWindow, fountainLocations){
         infoWindow.close();
         axios.post(BACKEND_URL + "/api/totalreviews").then((response) => {
             const data = response
-            console.log("Total review count: " + data.data[0]["count(*)"])
         })
         axios.post(BACKEND_URL + "/api/reviews", {building: marker.getTitle()}).then((response) => {
             const data = response.data

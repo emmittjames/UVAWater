@@ -1,75 +1,76 @@
-const mysql = require("mysql2")
-const express = require("express")
-const cors = require("cors")
+const { Pool } = require("pg");
+const express = require("express");
+const cors = require("cors");
 const nodemailer = require("nodemailer");
-require("dotenv").config({ path: "./.env" })
+require("dotenv").config({ path: "./.env" });
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-const con = mysql.createConnection(process.env.DATABASE_URL)
-  
-con.connect(function(err){
-    if (err) throw err
-    console.log("Connected!")
-})
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+    },
+});
 
-const PORT = process.env.PORT || "3000"
+pool.connect()
+    .then(() => console.log("Connected to PostgreSQL"))
+    .catch((err) => console.error("Error connecting to PostgreSQL", err));
+
+const PORT = process.env.PORT || "3000";
 app.listen(PORT, () => {
-    console.log("Listening on port " + PORT)
-})
+    console.log("Listening on port " + PORT);
+});
 
 app.post("/api/reviews", (req, res) => {
-    const building = req.body.building
-    const sql = "SELECT * FROM reviews WHERE buildingName = ?"
-    con.query(sql, [building], (err, result) => {
-        if(err) throw err
-        res.send(result)
-    })
-})
+    const building = req.body.building;
+    const sql = "SELECT * FROM reviews WHERE buildingName = $1";
+    pool.query(sql, [building], (err, result) => {
+        if (err) throw err;
+        res.send(result.rows);
+    });
+});
 
 app.post("/api/create", (req, res) => {
-    const building = req.body.building
-    const fountain = req.body.fountain
-    const temp = req.body.temp
-    const flow = req.body.flow
-
-    const sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES (?,?,?,?)"
-    con.query(sql, [building, fountain, temp, flow], (err, result) => {
-        if(err) throw err
-        res.send(result)
-    })
-})
+    const { building, fountain, temp, flow } = req.body;
+    const sql =
+        "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES ($1, $2, $3, $4)";
+    pool.query(sql, [building, fountain, flow, temp], (err, result) => {
+        if (err) throw err;
+        res.send(result.rows);
+    });
+});
 
 app.post("/api/totalreviews", (req, res) => {
-    const sql = "SELECT COUNT(*) FROM reviews"
-    con.query(sql, (err, result) => {
-        if(err) throw err
-        res.send(result)
-    })
-})
+    const sql = "SELECT COUNT(*) FROM reviews";
+    pool.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result.rows);
+    });
+});
 
 app.post("/email", (req, res) => {
-    const message = req.body.message
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    const message = req.body.message;
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
         auth: {
-            user: 'uvawater123@gmail.com',
-            pass: 'dfuenvgasvuwyoza'
-        }
+            user: "uvawater123@gmail.com",
+            pass: "dfuenvgasvuwyoza",
+        },
     });
-    var mailOptions = {
-        from: 'uvawater123@gmail.com',
-        to: 'emmittjames1@gmail.com',
-        subject: 'UVA Water Email',
-        text: message
+    const mailOptions = {
+        from: "uvawater123@gmail.com",
+        to: "emmittjames1@gmail.com",
+        subject: "UVA Water Email",
+        text: message,
     };
-    transporter.sendMail(mailOptions, function(error, info){
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
         } else {
-            res.send("Email sent: " + message)
+            res.send("Email sent: " + message);
         }
     });
-})
+});
