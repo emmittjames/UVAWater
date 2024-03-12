@@ -25,5 +25,5 @@ const waterFountainData = [
     [{ lat: 38.0350, lng: -78.5099 }, "Dell 2", ["1st floor"]],
 ]
 
-// const BACKEND_URL = "https://breakable-bell-bottoms-moth.cyclic.app"
-const BACKEND_URL = "http://localhost:3000"
+const BACKEND_URL = "https://breakable-bell-bottoms-moth.cyclic.app"
+// const BACKEND_URL = "http://localhost:3000"
