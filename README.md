@@ -37,10 +37,10 @@ Project hosted with:
 DATABASE_URL = "postgres://Your_PostgreSQL_username:Your_PostgreSQL_password@localhost:5432/Your_PostgreSQL_database_name"
 PORT = "3000"
 ```
-6. Create a .env file in the client directory
-7. Put the following into the .env file:
+6. Create a file called env.js in the client directory
+7. Put the following into env.js:
 ```
-BACKEND_URL = "https://localhost:3000"
+const BACKEND_URL = "https://localhost:3000"
 ```
 8. Everything should be ready to work on your localhost!
 
