@@ -29,23 +29,20 @@ Project hosted with:
 
 ## Cloning
 1. Clone the repository
-2. [Download](https://dev.mysql.com/downloads/mysql) and set up MySQL on your machine and create a database
-3. Create a .env file and put it into the server directory
-4. Put this code into the .env file using your MySQL credentials:
+2. [Download](https://www.postgresql.org/download/) and install PostgreSQL on your machine with the default port of 5432
+3. Create a database in PostgreSQL
+4. Create a .env file in the server directory
+5. Put the following into the .env file using your PostgreSQL credentials:
 ```
-DATABASE_URL={
-    host: 'localhost',
-    user: 'Your MySQL username',
-    password: 'Your MySQL password',
-    database: 'Your MySQL database name'
-}
-BACKEND_URL='https://localhost:3000'
+DATABASE_URL = postgres://Your_PostgreSQL_username:Your_PostgreSQL_password@localhost:5432/Your_PostgreSQL_database_name
+PORT = '3000'
 ```
-5. Go into /client/waterFountainData.js and replace the current value of BACKEND_URL with this:
+6. Create a .env file in the client directory
+7. Put the following into the .env file:
 ```
-const BACKEND_URL = "https://localhost:3000"
+BACKEND_URL = "https://localhost:3000"
 ```
-6. Everything should be up and running on your [localhost](https://localhost:3000)
+8. Everything should be ready to work on your localhost!
 
 ## Sample Images
 
