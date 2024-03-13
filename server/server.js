@@ -16,7 +16,10 @@ const pool = new Pool({
 });
 
 pool.connect()
-    .then(() => console.log("Connected to PostgreSQL"))
+    .then(() => {
+        console.log("Connected to PostgreSQL")
+        checkForReviewsTable();
+    })
     .catch((err) => console.error("Error connecting to PostgreSQL", err));
 
 const PORT = process.env.PORT || "3000";
@@ -74,3 +77,21 @@ app.post("/email", (req, res) => {
         }
     });
 });
+
+async function checkForReviewsTable() {
+    try {
+        const sql = `
+            CREATE TABLE IF NOT EXISTS reviews (
+                id SERIAL PRIMARY KEY,
+                buildingName VARCHAR(255),
+                fountainName VARCHAR(255),
+                flowRating INT,
+                tempRating INT
+            )
+        `;
+        await pool.query(sql);
+        console.log("Reviews table created or already exists");
+    } catch (error) {
+        console.error("Error creating reviews table:", error);
+    }
+}
