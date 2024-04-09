@@ -26,6 +26,7 @@ Project created with:
 Project hosted with:
 * [Netlify](https://www.netlify.com) - Frontend hosting
 * [Cyclic](https://www.cyclic.sh) - Backend hosting
+* ~~[PlanetScale](https://planetscale.com/) - MySQL database hosting~~
 * [Neon](https://neon.tech/) - PostgreSQL database hosting
 
 ## Cloning
