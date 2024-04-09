@@ -19,6 +19,7 @@ Project created with:
 * CSS
 * Node.js
 * Express.js
+* ~~MySQL~~
 * PostgreSQL
 * [Google Maps API](https://developers.google.com/maps)
 
