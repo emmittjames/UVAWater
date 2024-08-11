@@ -51,11 +51,8 @@ function collectData(){
         flow: flow
     }).then((response) => {
         console.log(response)
-        alert("Your response has been recorded. Thank you!")   
-    }).catch((error) => {
-        console.error(error);
-        alert("An error occurred while recording your response. Please try again.");
-    });
+    })
+    alert("Your response has been recorded. Thank you!")
 }
 
 function selectedTempRating(){
