@@ -19,12 +19,14 @@ Project created with:
 * CSS
 * Node.js
 * Express.js
+* ~~MySQL~~
 * PostgreSQL
 * [Google Maps API](https://developers.google.com/maps)
 
 Project hosted with:
 * [Netlify](https://www.netlify.com) - Frontend hosting
 * [Cyclic](https://www.cyclic.sh) - Backend hosting
+* ~~[PlanetScale](https://planetscale.com/) - MySQL database hosting~~
 * [Neon](https://neon.tech/) - PostgreSQL database hosting
 
 ## Cloning
