@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="ratingFormStyles.css">
     <script src = "ratingFormScript.js" defer></script>
     <script src = "waterFountainData.js"></script>
+    <script src = "env.js"></script>
     <script src="https://kit.fontawesome.com/f7bac7fe3b.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <title>Water fountain rating form</title>
@@ -28,7 +29,7 @@
             </ul>
         </div>
     </header>
-    <form onsubmit = "collectData()">
+    <form onsubmit = "collectData(event)">
         <h1>Water fountain rating form</h1>
         <h3>Building:</h3>
         <select name="buildingSelect" id="buildingSelect"></select>
