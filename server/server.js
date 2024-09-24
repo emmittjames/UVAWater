@@ -57,15 +57,18 @@ app.post("/api/totalreviews", (req, res) => {
 app.post("/email", (req, res) => {
     const message = req.body.message;
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: "Gmail",
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth: {
-            user: "uvawater123@gmail.com",
-            pass: "dfuenvgasvuwyoza",
+          user: process.env.SMTP_USERNAME,
+          pass: process.env.SMTP_PASSWORD,
         },
-    });
+      });
     const mailOptions = {
-        from: "uvawater123@gmail.com",
-        to: "emmittjames1@gmail.com",
+        from: process.env.SMTP_USERNAME,
+        to: process.env.RECIPIENT_EMAIL,
         subject: "UVA Water Email",
         text: message,
     };
