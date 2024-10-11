@@ -54,8 +54,7 @@ app.post("/api/totalreviews", (req, res) => {
     });
 });
 
-app.post("/email", (req, res) => {
-    const message = req.body.message;
+const sendEmail = (message) => {
     const transporter = nodemailer.createTransport({
         service: "Gmail",
         host: "smtp.gmail.com",
@@ -72,13 +71,20 @@ app.post("/email", (req, res) => {
         subject: "UVA Water Email",
         text: message,
     };
+    
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            console.log(error);
+            console.log("Error sending email: ", error);
         } else {
-            res.send("Email sent: " + message);
+            console.log("Email sent: " + info.response);
         }
     });
+};
+
+app.post("/email", (req, res) => {
+    const message = req.body.message;
+    sendEmail(message);
+    res.send("Email sent: " + message);
 });
 
 async function checkForReviewsTable() {
@@ -98,3 +104,16 @@ async function checkForReviewsTable() {
         console.error("Error creating reviews table:", error);
     }
 }
+
+let timer = null
+
+app.post("/pialarm", (req, res) => {
+    if(timer) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+        console.log("PI alarm triggered, sending email");
+        sendEmail("PI alarm triggered, something is probably wrong");
+    }, 600000)
+    res.send("Alarm set");
+})
