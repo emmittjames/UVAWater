@@ -15,43 +15,61 @@ const pool = new Pool({
     },
 });
 
-pool.connect()
-    .then(() => {
-        console.log("Connected to PostgreSQL")
-        checkForReviewsTable();
-    })
-    .catch((err) => console.error("Error connecting to PostgreSQL", err));
+pool.on('error', (err) => {
+    console.error('Unexpected error on idle client', err);
+    process.exit(-1);
+});
+
+const connectToDatabase = async () => {
+    try {
+        await pool.connect();
+        console.log("Connected to PostgreSQL");
+        await checkForReviewsTable();
+    } catch (err) {
+        console.error("Error connecting to PostgreSQL", err);
+    }
+};
+
+connectToDatabase();
 
 const PORT = process.env.PORT || "3000";
 app.listen(PORT, () => {
     console.log("Listening on port " + PORT);
 });
 
-app.post("/api/reviews", (req, res) => {
-    const building = req.body.building;
-    const sql = "SELECT * FROM reviews WHERE buildingName = $1";
-    pool.query(sql, [building], (err, result) => {
-        if (err) throw err;
-        res.send(result.rows);
-    });
+app.post("/api/reviews", async (req, res) => {
+    try {
+        const building = req.body.building;
+        const sql = "SELECT * FROM reviews WHERE buildingName = $1";
+        const result = await pool.query(sql, [building]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
-app.post("/api/create", (req, res) => {
-    const { building, fountain, temp, flow } = req.body;
-    const sql =
-        "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES ($1, $2, $3, $4)";
-    pool.query(sql, [building, fountain, flow, temp], (err, result) => {
-        if (err) throw err;
-        res.send(result.rows);
-    });
+app.post("/api/create", async (req, res) => {
+    try {
+        const { building, fountain, temp, flow } = req.body;
+        const sql = "INSERT INTO reviews (buildingName, fountainName, flowRating, tempRating) VALUES ($1, $2, $3, $4)";
+        await pool.query(sql, [building, fountain, flow, temp]);
+        res.json({ message: "Review created successfully" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
-app.post("/api/totalreviews", (req, res) => {
-    const sql = "SELECT COUNT(*) FROM reviews";
-    pool.query(sql, (err, result) => {
-        if (err) throw err;
-        res.send(result.rows);
-    });
+app.post("/api/totalreviews", async (req, res) => {
+    try {
+        const sql = "SELECT COUNT(*) FROM reviews";
+        const result = await pool.query(sql);
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
 const sendEmail = (message) => {
@@ -108,7 +126,9 @@ async function checkForReviewsTable() {
 let timer = null
 
 app.post("/pialarm", (req, res) => {
+    console.log("pi alarm hit");
     if(timer) {
+        console.log("Alarm cleared");
         clearTimeout(timer);
     }
     timer = setTimeout(() => {
@@ -116,4 +136,5 @@ app.post("/pialarm", (req, res) => {
         sendEmail("PI alarm triggered, something is probably wrong");
     }, 600000)
     res.send("Alarm set");
+    console.log("Alarm set");
 })
