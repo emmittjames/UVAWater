@@ -27,7 +27,6 @@ import {
   NoticeMessage,
 } from './messages'
 import { BufferReader } from './buffer-reader'
-import assert from 'assert'
 
 // every message is prefixed with a single bye
 const CODE_LENGTH = 1
@@ -199,7 +198,7 @@ export class Parser {
       case MessageCodes.CopyData:
         return this.parseCopyData(offset, length, bytes)
       default:
-        assert.fail(`unknown message code: ${code.toString(16)}`)
+        return new DatabaseError('received invalid response: ' + code.toString(16), length, 'error')
     }
   }
 
